@@ -26,11 +26,13 @@ describe('isValidEmail', () => {
   it('returns true for valid emails', () => {
     assert.equal(isValidEmail('john@example.com'), true);
     assert.equal(isValidEmail('user.name+tag@domain.co.uk'), true);
+    assert.equal(isValidEmail('user@[192.168.1.1]'), true);
   });
 
   it('returns false for invalid emails', () => {
     assert.equal(isValidEmail('invalid'), false);
     assert.equal(isValidEmail('missing@domain'), false);
+    assert.equal(isValidEmail('user@[00.00.00.00]'), false);
     assert.equal(isValidEmail(null), false);
   });
 });
